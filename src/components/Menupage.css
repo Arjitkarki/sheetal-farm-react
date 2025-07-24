@@ -1,0 +1,48 @@
+/* src/App.css (or MenuPage.css) */
+
+/* Grid container for menu cards */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+  
+  /* Individual menu card */
+  .menu-item {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  
+  .menu-item:hover {
+    transform: translateY(-4px);
+  }
+  
+  /* Image inside the card */
+  .menu-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Text under each image */
+  .menu-item .menu-content {
+    padding: 0.75rem;
+    text-align: center;
+  }
+  
+  .menu-item .menu-content h3 {
+    margin: 0.5rem 0 0.25rem;
+    font-size: 1.1rem;
+  }
+  
+  .menu-item .menu-content p {
+    margin: 0;
+    color: #555;
+    font-weight: bold;
+  }
+  
