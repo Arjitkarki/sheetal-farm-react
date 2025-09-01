@@ -1,4 +1,4 @@
-// src/components/ContactPage.js
+
 import React, { useState } from 'react';
 
 const ContactPage = () => {
@@ -30,7 +30,7 @@ const ContactPage = () => {
       <div className="container">
         <div className="page-header">
           <h1 className="page-title"><span className="highlight">Contact</span> Us</h1>
-          <p className="page-subtitle">Get in touch with Sheetal Farm</p>
+          <p className="page-subtitle">Get in touch with Sheetal Farm, ask questions, and book through email!</p>
         </div>
         
         <div className="contact-content">

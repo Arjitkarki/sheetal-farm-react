@@ -1,4 +1,4 @@
-// src/components/PicturesPage.js
+
 import React from 'react';
 
 const PicturesPage = () => {
