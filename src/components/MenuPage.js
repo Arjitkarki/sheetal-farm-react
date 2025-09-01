@@ -1,17 +1,18 @@
 // src/components/MenuPage.js
 import React, { useState } from 'react';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 import './Menupage.css';
 
 const menuImages = Array.from({ length: 12 }, (_, i) => ({
   src: `/images/menu${i + 1}.jpg`,
   alt: `Menu item ${i + 1}`,
+  title: `Dish ${i + 1}`,
+  price: `$${(i + 1) * 2}.00` // placeholder prices
 }));
 
 export default function MenuPage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
+  const [index, setIndex] = useState(-1);
 
   return (
     <div className="menu-page">
@@ -28,10 +29,7 @@ export default function MenuPage() {
             <div
               key={idx}
               className="gallery-item menu-item"
-              onClick={() => {
-                setPhotoIndex(idx);
-                setIsOpen(true);
-              }}
+              onClick={() => setIndex(idx)}
               style={{ cursor: 'pointer' }}
             >
               <img
@@ -39,25 +37,20 @@ export default function MenuPage() {
                 alt={img.alt}
                 className="gallery-image menu-image"
               />
+              <div className="menu-content">
+                <h3>{img.title}</h3>
+                <p>{img.price}</p>
+              </div>
             </div>
           ))}
         </div>
 
-        {isOpen && (
-          <Lightbox
-            mainSrc={menuImages[photoIndex].src}
-            nextSrc={menuImages[(photoIndex + 1) % menuImages.length].src}
-            prevSrc={menuImages[(photoIndex + menuImages.length - 1) % menuImages.length].src}
-            onCloseRequest={() => setIsOpen(false)}
-            onMovePrevRequest={() =>
-              setPhotoIndex((photoIndex + menuImages.length - 1) % menuImages.length)
-            }
-            onMoveNextRequest={() =>
-              setPhotoIndex((photoIndex + 1) % menuImages.length)
-            }
-            imageCaption={menuImages[photoIndex].alt}
-          />
-        )}
+        <Lightbox
+          open={index >= 0}
+          index={index}
+          close={() => setIndex(-1)}
+          slides={menuImages}
+        />
       </div>
     </div>
   );
