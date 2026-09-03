@@ -4,9 +4,14 @@ Source for [sheetalfarm.com](https://sheetalfarm.com) — a plain static HTML/CS
 
 ## Structure
 
-- `index.html`, `menu.html`, `pictures.html`, `contact.html` — the four pages
-- `styles.css` — shared styles
-- `images/` — photos and menu assets
+- `index.html` — home (`/`)
+- `menu/index.html` — menu (`/menu/`)
+- `photos/index.html` — photos (`/photos/`)
+- `contact/index.html` — contact (`/contact/`)
+- `styles.css` — shared styles, linked as `/styles.css` from every page
+- `images/` — photos and menu assets, linked as `/images/...`
+
+Each page lives in its own folder so it gets a clean URL without a `.html` extension — GitHub Pages serves `folder/index.html` when you request `/folder/`. All links/asset paths in the HTML are root-relative (`/menu/`, `/images/logo.jpg`, etc.) so they resolve correctly regardless of which folder the page is in.
 
 ## Run locally
 
@@ -14,8 +19,8 @@ Source for [sheetalfarm.com](https://sheetalfarm.com) — a plain static HTML/CS
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000/index.html`.
+Then open `http://localhost:8000/`.
 
 ## Deploy
 
-The site is served by GitHub Pages from the `gh-pages` branch (custom domain via the `CNAME` file, DNS managed through GoDaddy). To publish a change, push the updated files to `gh-pages` directly — there's no build step to run first.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which publishes the repo directly to GitHub Pages (Pages source is set to "GitHub Actions" in repo settings). No build step, no manual `gh-pages` push — just commit and push to `main`.
