@@ -1,0 +1,826 @@
+/* ============================================================
+   Sheetal Farm — design system
+   Palette drawn from the farm's own menu cards (cream + pine
+   green) plus the brick and roof tones of the buildings.
+   ============================================================ */
+
+:root {
+  --paper: #f6f1e3;
+  --paper-soft: #efe7d3;
+  --ink: #2a241c;
+  --ink-soft: #55503f;
+  --pine: #1e4638;
+  --pine-dark: #142f26;
+  --brick: #a9482e;
+  --brick-dark: #863a25;
+  --moss: #64735a;
+  --line: #d9cfb3;
+  --cream-line: rgba(246, 241, 227, 0.35);
+
+  --font-display: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino,
+    Georgia, "Times New Roman", serif;
+  --font-body: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --max: 1100px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--brick);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--pine);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+.eyebrow,
+h1,
+h2.section-title,
+.menu-category h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw + 1rem, 4rem);
+}
+
+h2.section-title,
+.menu-category h2 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.1rem);
+  letter-spacing: 0.06em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/* ---------------- Prayer-flag divider (signature element) ---------------- */
+
+.flags {
+  display: block;
+  width: 100%;
+  height: 28px;
+  color: var(--pine);
+}
+
+.flags--light {
+  color: var(--paper);
+}
+
+/* ---------------- Header ---------------- */
+
+header.site-header {
+  background: var(--pine);
+  color: var(--paper);
+}
+
+.header-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--paper);
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--paper);
+}
+
+.brand span {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+nav.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+}
+
+nav.main-nav a {
+  text-decoration: none;
+  color: var(--paper);
+  font-size: 0.98rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+
+nav.main-nav a:hover {
+  border-bottom-color: var(--brick);
+}
+
+nav.main-nav a[aria-current="page"] {
+  border-bottom-color: var(--brick);
+  color: #fff;
+}
+
+/* ---------------- Buttons ---------------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 0.85rem 1.7rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--brick);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--brick-dark);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--paper);
+  color: var(--paper);
+}
+
+.btn-ghost:hover {
+  background: rgba(246, 241, 227, 0.12);
+}
+
+.btn-ghost--dark {
+  border-color: var(--pine);
+  color: var(--pine);
+}
+
+.btn-ghost--dark:hover {
+  background: rgba(30, 70, 56, 0.08);
+}
+
+/* ---------------- Hero (home) ---------------- */
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  color: var(--paper);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 16, 13, 0.15) 0%,
+    rgba(10, 16, 13, 0.35) 45%,
+    rgba(8, 13, 11, 0.88) 100%
+  );
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4.5rem;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  color: var(--paper);
+  opacity: 0.85;
+  margin-bottom: 0.8rem;
+}
+
+.hero h1 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+
+.hero-tag {
+  font-size: 1.15rem;
+  max-width: 42ch;
+  margin-bottom: 1.6rem;
+  color: var(--paper);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+/* ---------------- Sections / layout ---------------- */
+
+section {
+  padding: 4rem 1.5rem;
+}
+
+.section-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.section-soft {
+  background: var(--paper-soft);
+}
+
+.section-dark {
+  background: var(--pine);
+  color: var(--paper);
+}
+
+.section-dark h2 {
+  color: var(--paper);
+}
+
+.section-lede {
+  max-width: 62ch;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+}
+
+.section-dark .section-lede {
+  color: rgba(246, 241, 227, 0.85);
+}
+
+.intro-text {
+  max-width: 68ch;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+/* ---------------- Trio cards (home) ---------------- */
+
+.trio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+}
+
+.trio-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 2rem 1.6rem;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.trio-card:hover {
+  border-color: var(--brick);
+  transform: translateY(-3px);
+}
+
+.trio-card .num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--brick);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.trio-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.trio-card p {
+  color: var(--ink-soft);
+  margin-bottom: 0;
+  font-size: 0.98rem;
+}
+
+/* ---------------- Photo teaser strip (home) ---------------- */
+
+.teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-top: 2.2rem;
+}
+
+.teaser-grid a {
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.teaser-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.teaser-grid a:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 720px) {
+  .teaser-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------------- Footer ---------------- */
+
+footer.site-footer {
+  background: var(--pine-dark);
+  color: rgba(246, 241, 227, 0.85);
+  padding: 0 0 2.5rem;
+}
+
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: space-between;
+}
+
+.footer-inner h3 {
+  color: var(--paper);
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+
+.footer-inner a {
+  text-decoration: none;
+  color: rgba(246, 241, 227, 0.85);
+}
+
+.footer-inner a:hover {
+  color: #fff;
+}
+
+.footer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-note {
+  max-width: var(--max);
+  margin: 2rem auto 0;
+  padding: 0 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(246, 241, 227, 0.55);
+}
+
+/* ============================================================
+   Menu page
+   ============================================================ */
+
+.menu-hero {
+  background: var(--pine);
+  color: var(--paper);
+  padding: 3.5rem 1.5rem 2.5rem;
+  text-align: center;
+}
+
+.menu-hero h1 {
+  color: #fff;
+}
+
+.menu-hero p {
+  max-width: 46ch;
+  margin: 0 auto;
+  color: rgba(246, 241, 227, 0.85);
+}
+
+.menu-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.menu-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.9rem 1.5rem;
+  display: inline-flex;
+  gap: 0.6rem;
+  max-width: var(--max);
+}
+
+.menu-nav a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--pine);
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+}
+
+.menu-nav a:hover {
+  border-color: var(--brick);
+  color: var(--brick);
+}
+
+.menu-body {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1rem 1.5rem 5rem;
+}
+
+.menu-category {
+  padding-top: 3rem;
+  scroll-margin-top: 4.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.menu-category:first-child {
+  border-top: none;
+}
+
+.menu-category > p.note {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-top: -0.4rem;
+}
+
+.menu-group {
+  margin-bottom: 1.8rem;
+}
+
+.menu-group h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brick);
+  margin-bottom: 0.8rem;
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.3rem 2.5rem;
+}
+
+.menu-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px dotted var(--line);
+}
+
+.menu-list .item-name {
+  font-size: 1.02rem;
+}
+
+.menu-list .item-name small {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+.menu-list .leader {
+  flex: 1;
+}
+
+.menu-list .price {
+  font-family: var(--font-display);
+  color: var(--pine);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Sheetal Khana sets: name + description + price, single column */
+
+.set-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.set-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.2rem;
+}
+
+.set-list h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--pine);
+  margin: 0 0 0.3rem;
+}
+
+.set-list p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.set-list .price {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--brick);
+  white-space: nowrap;
+}
+
+/* Packages: real time sequence, so numbered steps are earned here */
+
+.package-card {
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.package-card h3 {
+  color: var(--pine);
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.package-price {
+  font-family: var(--font-display);
+  color: var(--brick);
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 2px solid var(--line);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 1.4rem 1.6rem;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 0.35rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brick);
+}
+
+.timeline time {
+  display: block;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brick);
+  margin-bottom: 0.2rem;
+}
+
+.timeline ul {
+  margin: 0.3rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+}
+
+.package-fine {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  margin-top: 1.4rem;
+  border-top: 1px dashed var(--line);
+  padding-top: 1rem;
+}
+
+/* ============================================================
+   Pictures page
+   ============================================================ */
+
+.gallery-intro {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1rem 1.5rem 4.5rem;
+}
+
+.gallery-item {
+  background: var(--paper);
+}
+
+.gallery-item a {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item a:hover img {
+  transform: scale(1.06);
+}
+
+.gallery-item figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   Contact page
+   ============================================================ */
+
+.contact-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 2.5rem 2rem;
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.contact-row dt {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--moss);
+  margin-bottom: 0.25rem;
+}
+
+.contact-row dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--pine);
+}
+
+.contact-row a {
+  text-decoration: none;
+  color: var(--pine);
+}
+
+.contact-row a:hover {
+  color: var(--brick);
+}
+
+/* ---------------- Small screens ---------------- */
+
+@media (max-width: 640px) {
+  section {
+    padding: 3rem 1.2rem;
+  }
+
+  .hero {
+    min-height: 78vh;
+  }
+
+  .header-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  nav.main-nav ul {
+    justify-content: center;
+  }
+}
